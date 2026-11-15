@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="330" viewBox="0 0 760 330" font-family="Inter, ui-sans-serif, system-ui, sans-serif">
+  <rect width="760" height="330" fill="#0d0f14" rx="18"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b93a7"/>
+    </marker>
+  </defs>
+
+  <text x="380" y="34" text-anchor="middle" fill="#9aa3b2" font-size="13" letter-spacing="3">STEAM / MANZOKU / CONCEPT</text>
+
+  <rect x="30" y="70" width="180" height="56" rx="12" fill="#161a22" stroke="#2c3442"/>
+  <text x="120" y="103" text-anchor="middle" fill="#e8eaed" font-size="15">Moonlight client</text>
+  <text x="120" y="124" text-anchor="middle" fill="#8b93a7" font-size="12">Apple TV 4K</text>
+
+  <line x1="210" y1="98" x2="290" y2="98" stroke="#8b93a7" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="290" y="70" width="170" height="56" rx="12" fill="#161a22" stroke="#2c3442"/>
+  <text x="375" y="103" text-anchor="middle" fill="#e8eaed" font-size="15">Sunshine</text>
+  <text x="375" y="124" text-anchor="middle" fill="#8b93a7" font-size="12">host streamer</text>
+
+  <line x1="460" y1="98" x2="540" y2="98" stroke="#8b93a7" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="540" y="70" width="200" height="56" rx="12" fill="#16211c" stroke="#2f4a3c"/>
+  <text x="640" y="103" text-anchor="middle" fill="#e8eaed" font-size="15">NVIDIA RTX 3060 Ti</text>
+  <text x="640" y="124" text-anchor="middle" fill="#8b93a7" font-size="12">passed through</text>
+
+  <line x1="740" y1="98" x2="820" y2="98" stroke="#8b93a7" stroke-width="2"/>
+
+  <rect x="820" y="70" width="200" height="56" rx="12" fill="#161a22" stroke="#2c3442"/>
+  <text x="920" y="103" text-anchor="middle" fill="#e8eaed" font-size="15">SteamOS VM</text>
+  <text x="920" y="124" text-anchor="middle" fill="#8b93a7" font-size="12">Bazzite / gaming</text>
+
+  <line x1="1020" y1="98" x2="1100" y2="98" stroke="#8b93a7" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <rect x="1100" y="70" width="140" height="56" rx="12" fill="#16211c" stroke="#2f4a3c"/>
+  <text x="1170" y="103" text-anchor="middle" fill="#e8eaed" font-size="15">Game</text>
+
+</svg>

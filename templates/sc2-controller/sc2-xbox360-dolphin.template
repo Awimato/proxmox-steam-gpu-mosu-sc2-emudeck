@@ -1,0 +1,21 @@
+# SC2 -> Dolphin controller setup template
+# Copy to: ~/.var/app/org.DolphinEmu.dolphin-emu/config/dolphin-emu/WiimoteNew.ini
+# Content source: scripts/controller_setup.sh (EmuDeck integration)
+# Purpose: Steam Controller 2 IR (pointer) binds to right analog stick via
+# Dolphin's named axes (Right X+/Y+) instead of desktop XInput2 mouse.
+
+[Wiimote1]
+IR/Up = `Right Y+`
+IR/Down = `Right Y-`
+IR/Left = `Right X-`
+IR/Right = `Right X+`
+IR/Hide = `Thumb R`
+Options/Background Input = `1.000000`
+
+[Wiimote2]
+IR/Up = `Right Y+`
+IR/Down = `Right Y-`
+IR/Left = `Right X-`
+IR/Right = `Right X+`
+IR/Hide = `Thumb R`
+Options/Background Input = `1.000000`

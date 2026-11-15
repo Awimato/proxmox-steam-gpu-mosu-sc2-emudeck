@@ -29,6 +29,7 @@ screen is whatever client I pick.
 - `scripts/setup-host-vfio.sh` - enables IOMMU / VFIO on the Proxmox host
 - `scripts/install-gaming-services.sh` - installs Moonlight + Sunshine + EmuDeck inside the SteamOS VM
 - `terraform.tfvars.example` - values I need to fill in before first apply
+- `templates/sc2-controller/` - SC2 -> Xbox 360 controller setup templates (sdl2 + dolphin) for EmuDeck integration
 
 ## Hardware this was built around
 
@@ -38,6 +39,8 @@ screen is whatever client I pick.
 - SteamOS VM (Bazzite), 8 cores, 16 GB RAM, 500 GB disk
 
 ## How it fits together
+
+![Steam / Manzoku concept](docs/concept.svg)
 
 ```
 Moonlight client ──> Sunshine on Proxmox host ──> GPU passed through ──> SteamOS VM ──> game
@@ -95,6 +98,18 @@ Terraform creates the VM, starts it, waits for IP, runs install script
 - Fritzbox: port forward **47989 TCP → Proxmox host** (`<proxmox-host>`).
 - No other ports needed for this setup (GPU passthrough, controller, EmuDeck).
 
+## Audio (Apple TV 4K)
+
+When streaming Moonlight -> Sunshine -> GPU -> SteamOS VM -> TV, sound should
+come out over the Apple TV 4K directly.
+
+Check:
+- Apple TV: Settings -> Sound -> Audio Output -> Apple TV 4K
+- Moonlight: audio from stream, output to TV
+
+No extra template needed. If no sound, check Moonlight audio track + Apple TV
+output. Sunshine audio goes with the stream from the GPU.
+
 ## Example GPU setup
 
 ```text
@@ -115,3 +130,4 @@ Mediated device example: `mdev0.1`.
 - GPU functions (card + audio) must be in the same IOMMU group, otherwise passthrough fails.
 - Steam Controller 2 goes in via USB passthrough. Bluetooth is not passed through.
 - Sunshine default port is 47989, adjust if you changed it.
+- Steam games like Squad do not run under a VM — for that they need a standalone single OS without hypervisor.
