@@ -77,7 +77,7 @@ resource "proxmox_virtual_environment_vm" "steamos" {
   }
 
   cdrom {
-    file_id   = "hdd-iso:iso/${var.vm_iso}"
+    file_id   = var.autoinstall_enabled ? "hdd-iso:iso/${var.autoinstall_iso}" : "hdd-iso:iso/${var.vm_iso}"
     interface = "ide0"
   }
 
@@ -90,12 +90,6 @@ resource "proxmox_virtual_environment_vm" "steamos" {
   tags = ["steamos", "linux", "gaming", "terraform"]
 
   started = true
-
-  lifecycle {
-    ignore_changes = [
-      cdrom
-    ]
-  }
 }
 
 resource "null_resource" "steamos_bootstrap" {

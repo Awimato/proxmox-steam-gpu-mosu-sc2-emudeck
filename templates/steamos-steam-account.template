@@ -1,0 +1,14 @@
+# SteamOS Steam account auto-config template
+# For: added Steam account -> SteamOS / EmuDeck gamepad setup
+# Source: scripts/controller_setup.sh + big IAC integration
+
+# After adding Steam account to SteamOS VM:
+# 1. Steam client starts, account logs in.
+# 2. Steam Input virtual Xbox 360 pad appears (SC2 -> xpad via Steam Input).
+# 3. EmuDeck/Dolphin/RetroArch get autoconfig via sc2-xbox360 templates.
+
+# Steam deck style auto boot (optional):
+#   SteamMode = desktop / bigpicture via steam:// commands inside VM.
+
+# Controller handoff:
+#   SC2 plugged into VM USB -> Steam Input -> xpad -> Dolphin/RA autoconfig.

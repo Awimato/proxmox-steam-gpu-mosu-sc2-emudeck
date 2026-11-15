@@ -13,3 +13,10 @@ terraform.tfvars
 
 # Binary ISOs
 *.iso
+
+# VS Code
+.vscode/
+settings.json
+
+# Generated diagram vector (PNG is the committed one; SVG is a local by-product)
+concept/concept-manzoku.svg

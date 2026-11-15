@@ -88,6 +88,18 @@ variable "vm_iso" {
   default     = "bazzite-stable-amd64.iso"
 }
 
+variable "autoinstall_enabled" {
+  type        = bool
+  description = "Use the Packer-built SteamOS autoinstall ISO instead of the Bazzite release ISO"
+  default     = false
+}
+
+variable "autoinstall_iso" {
+  type        = string
+  description = "SteamOS autoinstall ISO file name on the hdd-iso storage"
+  default     = "bazzite-stable-amd64-autoinstall.iso"
+}
+
 variable "gpu_pci_ids" {
   type        = string
   description = "GPU PCI IDs in form '0000:xx:yy.0;0000:xx:yy.1' (GPU + audio function)"

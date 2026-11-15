@@ -3,6 +3,8 @@ proxmox_api_token_id   = "root@pam!Administrator"
 proxmox_api_token_secret = "your-token-secret-here"
 proxmox_tls_insecure   = true
 
+proxmox_host = "<proxmox-host>"
+
 vm_id    = 110
 vm_name  = "steamos-vm"
 
@@ -11,6 +13,9 @@ vm_cores     = 8
 vm_memory    = 16384
 vm_disk_size = 500
 vm_iso       = "bazzite-stable-amd64.iso"
+
+autoinstall_enabled = false
+autoinstall_iso     = "bazzite-stable-amd64-autoinstall.iso"
 
 gpu_pci_ids = "0000:01:00.0;0000:01:00.1"
 gpu_mapping = "nvidia-gpu"

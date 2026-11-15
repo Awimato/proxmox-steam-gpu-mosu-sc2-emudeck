@@ -1,11 +1,14 @@
 #!/bin/bash
 # Enable IOMMU + VFIO on the Proxmox host.
 # Run ON THE PROXMOX HOST before `terraform apply`.
-# GPU: NVIDIA GeForce RTX 3060 Ti (device ids: 10de:2489 + audio 10de:228b)
+#
+# Set the GPU + audio function IDs for your card (find them with `lspci -nn`,
+# they look like 10de:xxxx / 10de:yyyy):
+#   GPU_IDS="10de:xxxx,10de:yyyy" sudo -E bash scripts/setup-host-vfio.sh
 
 set -e
 
-GPU_IDS="10de:2489,10de:228b"
+GPU_IDS="${GPU_IDS:?set GPU_IDS to your GPU and audio device IDs, see lspci -nn}"
 
 echo "==> Setting GRUB cmdline (IOMMU + VFIO)"
 sudo sed -i 's|GRUB_CMDLINE_LINUX_DEFAULT=.*|GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on iommu=pt"|' /etc/default/grub

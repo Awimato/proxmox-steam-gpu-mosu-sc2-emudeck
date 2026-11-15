@@ -26,25 +26,37 @@ screen is whatever client I pick.
 ## What's in this repo
 
 - `main.tf` - creates the SteamOS VM on the Proxmox node, GPU passthrough, controller passthrough
+- `packer/steamos-autoinstall.pkr.hcl` - builds a Bazzite ISO with the kickstart baked in, for the unattended install
 - `scripts/setup-host-vfio.sh` - enables IOMMU / VFIO on the Proxmox host
+- `scripts/concept-diagram/` - editable source for the concept diagram (`make_concept.py` + font fetch)
 - `scripts/install-gaming-services.sh` - installs Moonlight + Sunshine + EmuDeck inside the SteamOS VM
 - `terraform.tfvars.example` - values I need to fill in before first apply
 - `templates/sc2-controller/` - SC2 -> Xbox 360 controller setup templates (sdl2 + dolphin) for EmuDeck integration
+- `templates/steamos-steam-account.template` - SteamOS Steam account auto-config for added account + gamepad setup
 
 ## Hardware this was built around
 
 - Proxmox VE on ASRock X570D4U, AMD Ryzen 9 5900XT
-- NVIDIA GeForce RTX 3060 Ti, passed through to the VM
+- NVIDIA GeForce RTX 3070, passed through to the VM
 - Steam Controller 2
 - SteamOS VM (Bazzite), 8 cores, 16 GB RAM, 500 GB disk
 
 ## How it fits together
 
-![Steam / Manzoku concept](docs/concept.svg)
+![Steam / Manzoku concept](concept/concept-manzoku.png)
+
+Diagram source is editable: `scripts/concept-diagram/` (rebuild with
+`python3 scripts/concept-diagram/make_concept.py`).
 
 ```
 Moonlight client ──> Sunshine on Proxmox host ──> GPU passed through ──> SteamOS VM ──> game
                           (port 47989)
+```
+
+Install side, unattended:
+
+```
+Bazzite ISO + kickstart ──> packer build ──> autoinstall ISO ──> terraform cdrom ──> VM boots hands-free
 ```
 
 Sunshine runs on the host and reads the GPU directly. Moonlight on the client
@@ -69,6 +81,13 @@ sudo bash scripts/setup-host-vfio.sh
 scp bazzite-stable-amd64.iso root@<proxmox-host>:/mnt/hdd-iso/template/iso/
 ssh root@<proxmox-host> "pvescan"
 ```
+
+Unattended path (WIP): `cd packer && packer build steamos-autoinstall.pkr.hcl`
+bakes the kickstart into the ISO (input: `packer/iso/bazzite-stable-amd64.iso`),
+then upload `packer/output/bazzite-autoinstall.iso` and set
+`autoinstall_enabled = true` so Terraform boots that ISO instead. Still needs
+`scripts/build-linux-iso.sh` and `autoinstall/kickstart/steamos-ks.cfg`, which
+are not in the repo yet.
 
 3. **Terraform.** Clone, init, fill tfvars, apply.
 
