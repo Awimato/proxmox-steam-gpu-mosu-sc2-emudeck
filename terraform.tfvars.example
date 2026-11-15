@@ -1,0 +1,24 @@
+proxmox_api_url        = "https://<proxmox-host>:8006/api2/json"
+proxmox_api_token_id   = "root@pam!Administrator"
+proxmox_api_token_secret = "your-token-secret-here"
+proxmox_tls_insecure   = true
+
+vm_id    = 110
+vm_name  = "steamos-vm"
+
+vm_os_type   = "l26"
+vm_cores     = 8
+vm_memory    = 16384
+vm_disk_size = 500
+vm_iso       = "bazzite-stable-amd64.iso"
+
+gpu_pci_ids = "0000:01:00.0;0000:01:00.1"
+gpu_mapping = "nvidia-gpu"
+gpu_pcie    = false
+gpu_rombar  = false
+gpu_xvga    = true
+
+controller_enabled = false
+controller_host    = ""
+controller_mapping = "steam-controller-2"
+controller_usb3    = false
