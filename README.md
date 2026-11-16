@@ -29,6 +29,7 @@ screen is whatever client I pick.
 - `packer/steamos-autoinstall.pkr.hcl` - builds a Bazzite ISO with the kickstart baked in, for the unattended install
 - `scripts/setup-host-vfio.sh` - enables IOMMU / VFIO on the Proxmox host
 - `scripts/concept-diagram/` - editable source for the concept diagram (`make_concept.py` + font fetch)
+- `concept/concept-manzoku.drawio` - same diagram in draw.io for manual box/text edits
 - `scripts/install-gaming-services.sh` - installs Moonlight + Sunshine + EmuDeck inside the SteamOS VM
 - `terraform.tfvars.example` - values I need to fill in before first apply
 - `templates/sc2-controller/` - SC2 -> Xbox 360 controller setup templates (sdl2 + dolphin) for EmuDeck integration
@@ -45,8 +46,9 @@ screen is whatever client I pick.
 
 ![Steam / Manzoku concept](concept/concept-manzoku.png)
 
-Diagram source is editable: `scripts/concept-diagram/` (rebuild with
-`python3 scripts/concept-diagram/make_concept.py`).
+Diagram source is editable two ways: `concept/concept-manzoku.drawio`
+(drag boxes and edit text in draw.io) or `scripts/concept-diagram/` (Python
+generator, rebuild with `python3 scripts/concept-diagram/make_concept.py`).
 
 ```
 Moonlight client ──> Sunshine on Proxmox host ──> GPU passed through ──> SteamOS VM ──> game
